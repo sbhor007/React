@@ -15,34 +15,69 @@ Currently, two official plugins are available:
 ```jsx
 
     
+
 import React from 'react'
 //rfce
-function card(props) { // function get argument as an object of props
-
-    console.log(props);
+ //function Card(props) { //--> without destructuring
+function Card({username,btnText='read me'}) { // with destructuring props
+                        // default Value Pass. if user not passing value
+    console.log(username);
     
   return (
-    <div class="relative h-[400px] w-[300px] rounded-md">
+    <div className="relative h-[400px] w-[300px] rounded-md">
   <img
     src="https://images.unsplash.com/photo-1546961329-78bef0414d7c?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHVzZXJ8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
     alt="AirMax Pro"
-    class="z-0 h-full w-full rounded-md object-cover"
+    className="z-0 h-full w-full rounded-md object-cover"
   />
-  <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-  <div class="absolute bottom-4 left-4 text-left">
-    <h1 class="text-lg font-semibold text-white">Delba</h1>
-    <p class="mt-2 text-sm text-gray-300">
+  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+  <div className="absolute bottom-4 left-4 text-left">
+    <h1 className="text-lg font-semibold text-white">{username}</h1>
+    <p className="mt-2 text-sm text-gray-300">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
       debitis?
     </p>
-    <button class="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-      View Profile →
+    <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
+      {btnText || 'Read me'} →
     </button>
   </div>
 </div>
   )
 }
 
-export default card
+export default Card
+
+```
+
+- App.jsx
+```jsx
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Card from './components/card'
+
+function App() {
+  const [count, setCount] = useState(0);
+  let myObj = {
+    username : 'santosh',
+    age : 20
+  }
+
+  let newArr= [1,2,3]
+  return (
+    <>
+      <h1 className="bg-green-400 text-black p-3 rounded-md font-serif mb-5">
+        Teilwind Test
+      </h1>
+      <Card username = 'chai aur code' btnText='Visit me' someObj = {myObj} myarr = {newArr} /> {/* //pass values one component to another component */}
+      <Card username= 'Santosh' btnText='click me'/>
+      <Card />
+      
+    </>
+  );
+}
+
+export default App;
 
 ```
