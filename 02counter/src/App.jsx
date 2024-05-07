@@ -1,21 +1,20 @@
 import { useState } from "react";
-// useState -->it responsible for change state -- change UI values
 import "./App.css";
 
 function App() {
-  //    variable , function -- variable name are any
-  let [counter, setCounter] = useState(10); //using useState hoock -- pass default value any -- it reruens two values in array form
-
-  // let counter = 5;
+  const [counter, setCounter] = useState(10);
   const addValue = () => {
-    if (counter < 20) counter = counter + 1;
-    // console.log("click", counter);
-    setCounter(counter); // call setcounter function and pass variable
+    if (counter < 20) {
+      //duplicate problem
+      setCounter((counter) =>  counter + 1);
+      setCounter((counter) =>  counter + 1);
+      setCounter((counter) =>  counter + 1);
+      setCounter((counter) =>  counter + 1);
+    }
   };
 
   const removeValue = () => {
     if (counter > 0) setCounter(counter - 1);
-    // console.log("click", counter - 1);
   };
   return (
     <>
