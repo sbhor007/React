@@ -1,28 +1,26 @@
 import React, { useId } from "react";
 
-function InputBox(
-  {
-  label,
+function InputBox({
+  labele,
   amount,
-  onAmmountChange,
+  onAmountChange,
   onCurrencyChange,
-  curruncyOption = [],
+  currencyOptions = [], // Corrected spelling
   selectCurrency = "usd",
   amountDisable = false,
-  CurruncyDisable = false,
-  className = ""
-  }
-) {
-  const amountInputId = useId(); //genarating unique IDs that can pass can be password to accessibility attributes
+  currencyDisable = false, // Corrected spelling
+  className = "",
+}) {
+  const amountInputId = useId(); // Generating unique IDs that can be passed to accessibility attributes
 
   return (
-    <div className={`bg-white p-3 rounded-lg text-sm flex`}>
+    <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
       <div className="w-1/2">
         <label
           htmlFor={amountInputId}
           className="text-black/40 mb-2 inline-block"
         >
-          {label} 
+          {labele}
         </label>
         <input
           id={amountInputId}
@@ -32,35 +30,24 @@ function InputBox(
           disabled={amountDisable}
           value={amount}
           onChange={(e) =>
-            onAmmountChange && onAmmountChange(Number(e.target.value))
-          } // && --> check amount enter or not
+            onAmountChange && onAmountChange(Number(e.target.value))
+          } // Ensure onAmountChange is called if it exists
         />
       </div>
 
       <div className="w-1/2 flex flex-wrap justify-end text-right">
-        <p className="text-black/40 mb-2 w-full">Currency Typr</p>
+        <p className="text-black/40 mb-2 w-full">Currency Type</p> {/* Corrected label text */}
         <select
           className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
           value={selectCurrency}
           onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
-          // disabled={CurruncyDisable}
+          disabled={currencyDisable}
         >
-          {/* 
-            Curruncy loop--
-            key in loops in react
-            -- if use loops in react then remember to put keys to increase performance
-            
-            */}
-          {curruncyOption.map((currency) => {
-            return (
-              <option
-                key={currency} // if use loops in react then remember to put keys to increase performance
-                value={currency}
-              >
-                {currency}k
-              </option>
-            );
-          })}
+          {currencyOptions.map((currency) => (
+            <option key={currency} value={currency}>
+              {currency}
+            </option>
+          ))}
         </select>
       </div>
     </div>

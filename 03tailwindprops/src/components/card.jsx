@@ -21,7 +21,7 @@ function Card({username,btnText='read me'}) { // with destructuring props
       debitis?
     </p>
     <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-      {btnText || 'Read me'} →
+      {btnText} →
     </button>
   </div>
 </div>

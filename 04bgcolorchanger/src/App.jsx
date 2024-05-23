@@ -10,7 +10,7 @@ function App() {
 
           <button
             className=" outline-none px-4 py-1 text-white shadow-lg rounded-full"
-            style={{ backgroundColor: 'red' }}
+            style={{ backgyroundColor: 'red' }}
             onClick={() => setColor('red')}
           >
             Red

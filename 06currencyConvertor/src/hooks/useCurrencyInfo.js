@@ -5,7 +5,7 @@ function useCurrencyInfo(currency = 'inr') {
 
   useEffect(() => {
     fetch(
-      `https://v6.exchangerate-api.com/v6/27a8cbbb57b94e220570e62a/latest/${currency}`
+      `https://v6.exchangerate-api.com/v6/41ae3092a1fb46e60ac55853/latest/${currency}`
     )
       .then((response) => response.json())
       .then((response) => setData(response.conversion_rates))
@@ -14,7 +14,8 @@ function useCurrencyInfo(currency = 'inr') {
       });
   }, [currency]);
 
-  console.log(data); // This will log the data received from the API
+  // console.log(data); // This will log the data received from the API
+  // console.log('hii');
 
   return data; // This returns the data state, which will be empty initially
 }
