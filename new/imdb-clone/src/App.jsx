@@ -1,14 +1,34 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+// import './App.css'
+import Navbar from "./components/Navbar";
+import Movies from "./components/Movies";
+import Watchlist from "./components/Watchlist";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Banner from "./components/Banner";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-    <h1 className=''>Hello React</h1>
+      <BrowserRouter>
+        <Navbar />
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Banner />
+                <Movies />
+              </>
+            }
+          />
+          <Route path="/watchlist" element={<Watchlist />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
