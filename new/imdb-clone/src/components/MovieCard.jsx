@@ -8,7 +8,7 @@ function MovieCard({poster_path,name}) {
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
       }}
     >
-      <div className="text-white text-xl w-full p-2 text-center bg-gray-900/60">
+      <div className="text-white text-xl w-full p-2 text-center bg-gray-900/60 rounded-b-xl">
         {name}
       </div>
     </div>
