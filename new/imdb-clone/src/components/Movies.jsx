@@ -32,9 +32,10 @@ function Movies() {
     <div className="p-5">
       <div className="text-2xl font-bold text-center m-5">Trending Movies</div>
       <div className="flex flex-wrap flex-row justify-around gap-8">
-        {movies.map((movieObj) => {
+        {movies.map((movieObj,index) => {
           return (
             <MovieCard
+            key={index}
               poster_path={movieObj.poster_path}
               name={movieObj.original_title}
             />

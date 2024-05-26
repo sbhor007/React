@@ -2,7 +2,7 @@ import React from "react";
 
 function Pagination({nextPage,previusPage,curruntPage}) {
   return (
-    <div className="bg-gray-400 p-4 flex justify-center">
+    <div className="bg-gray-400 p-4 flex justify-center my-7">
       <div className="px-8 hover:cursor-pointer" onClick={previusPage}>
         <i class="fa-solid fa-arrow-left"></i>
       </div>
