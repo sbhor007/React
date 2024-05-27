@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -11,18 +11,26 @@ import Movies from './components/Movies.jsx'
 import Banner from './components/Banner.jsx'
 
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Layout/>}>
-      <Route path="/movies" element={<><Banner /><Movies /></>} />
-      <Route path="/watchlist" element={<Watchlist />} />
-    </Route>
-  )
-);
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route path="/" element={<Layout/>}>
+//       <Route path="/movies" element={<><Banner /><Movies /></>} />
+//       <Route path="/watchlist" element={<Watchlist />} />
+//     </Route>
+//   )
+// );
+
+// let [watchlist,setWatchlist] = useState([]);
+
+// let handleAddWatchList = (movieObj) =>{
+//   let newWatclist = [...watchlist,movieObj]
+//   setWatchlist(newWatclist)
+//   console.log(newWatclist);
+// }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
-    {/* <App /> */}
+    {/* <RouterProvider router={router}/> */}
+    <App />
   </React.StrictMode>,
 )
