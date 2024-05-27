@@ -7,8 +7,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Banner from "./components/Banner";
 
 function App() {
-  const [count, setCount] = useState(0);
+  let [watchlist, setWatchlist] = useState([]);
 
+  let handleAddWatchList = (movieObj) => {
+    let newWatclist = [...watchlist, movieObj];
+    setWatchlist(newWatclist);
+    console.log(newWatclist);
+  };
+
+  let handleRemoveWatchList = (movieObj) => {
+    let filterWatchList = watchlist.filter((movie) => {
+      return movieObj.id != movie.id;
+    });
+    setWatchlist(filterWatchList);
+  };
   return (
     <>
       <BrowserRouter>
@@ -16,11 +28,15 @@ function App() {
 
         <Routes>
           <Route
-            path="/"
+            path="/movies"
             element={
               <>
                 <Banner />
-                <Movies />
+                <Movies
+                  handleAddWatchList={handleAddWatchList}
+                  handleRemoveWatchList={handleRemoveWatchList}
+                  watchlist={watchlist}
+                />
               </>
             }
           />
