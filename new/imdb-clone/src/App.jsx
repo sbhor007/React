@@ -12,26 +12,32 @@ function App() {
   let handleAddWatchList = (movieObj) => {
     let newWatclist = [...watchlist, movieObj];
     //store data in a local storage
-    localStorage.setItem('moviesApp', JSON.stringify(newWatclist))
+    localStorage.setItem("moviesApp", JSON.stringify(newWatclist));
 
     setWatchlist(newWatclist);
+
     console.log(newWatclist);
   };
 
   let handleRemoveWatchList = (movieObj) => {
-    setWatchlist(watchlist.filter( movie => movieObj.id != movie.id));
+    const filteredWatchList = watchlist.filter(
+      (movie) => movieObj.id != movie.id
+    );
+
+    setWatchlist(filteredWatchList);
+    //delate items from local storage
+    localStorage.setItem("moviesApp", JSON.stringify(filteredWatchList));
     console.log(watchlist);
   };
-//store data in a local storage
+  //store data in a local storage
   useEffect(() => {
-    let moviesFromLocalStorage = localStorage.getItem('moviesApp')
-    if(!moviesFromLocalStorage)
-      {
-        return;
-      }else{
-        setWatchlist(JSON.parse(moviesFromLocalStorage))
-      }
-  },[])
+    let moviesFromLocalStorage = localStorage.getItem("moviesApp");
+    if (!moviesFromLocalStorage) {
+      return;
+    } else {
+      setWatchlist(JSON.parse(moviesFromLocalStorage));
+    }
+  }, []);
   return (
     <>
       <BrowserRouter>
@@ -51,7 +57,16 @@ function App() {
               </>
             }
           />
-          <Route path="/watchlist" element={<Watchlist  watchlist={watchlist} setWatchList={setWatchlist}/>} />
+          <Route
+            path="/watchlist"
+            element={
+              <Watchlist
+                watchlist={watchlist}
+                setWatchList={setWatchlist}
+                handleRemoveWatchList={handleRemoveWatchList}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
