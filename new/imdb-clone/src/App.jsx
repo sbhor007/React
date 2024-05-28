@@ -31,7 +31,7 @@ function App() {
       }else{
         setWatchlist(JSON.parse(moviesFromLocalStorage))
       }
-  })
+  },[])
   return (
     <>
       <BrowserRouter>
