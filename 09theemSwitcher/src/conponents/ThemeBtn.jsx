@@ -13,7 +13,7 @@ function ThemeBtn() {
     }
   };
   return (
-    <label className="relative inline-flex items-center cursor-pointer">
+    <label className="relative inline-flex items-center cursor-pointer outline-none">
       <input
         type="checkbox"
         value=""
