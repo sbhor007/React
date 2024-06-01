@@ -18,7 +18,7 @@ function App() {
   }
 
   const toggeleComplete = (id) =>{
-    setTodos((prevTodo) => prevTodo.map((prevTodo) => prevTodo === id ? {...prevTodo,completed: !prevTodo.completed} : prevTodo))
+    setTodos((prevTodo) => prevTodo.map((prevTodo) => prevTodo.id === id ? {...prevTodo,completed: !prevTodo.completed} : prevTodo))
   }
 
   //local storage functionalitys
@@ -55,7 +55,7 @@ function App() {
             {
               todos.map((todo) => (
                 <div key={todo.key} className="w-full"> 
-                <TodoItem too={todo} />
+                <TodoItem todo={todo} />
                 </div>
               ))}
           </div>
