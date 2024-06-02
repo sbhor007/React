@@ -3,8 +3,10 @@ import { useTodo } from "../contexts";
 
 function TodoItem({ todo }) {
   const [isTodoEditable, setIsTodoEditable] = useState(false);
+  console.log("todo.todo : ", todo.todo);
   const [todoMsg, setTodoMsg] = useState(todo.todo);
   const { updateTodo, deleteTodo, toggeleComplete } = useTodo()
+  console.log("Todo masage : " , todoMsg);
 
   const editTodo = () => {
     updateTodo(todo.id, { ...todo, todo: todoMsg });
@@ -13,6 +15,7 @@ function TodoItem({ todo }) {
   const toggleCompleted = () => {
     toggeleComplete(todo.id);
   };
+  
   return (
     <div
       className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
@@ -30,9 +33,9 @@ function TodoItem({ todo }) {
         className={`border outline-none w-full bg-transparent rounded-lg ${
           isTodoEditable ? "border-black/10 px-2" : "border-transparent"
         } ${todo.completed ? "line-through" : ""}`}
-        value={todoMsg}
-        onChange={(e) => setTodoMsg(e.target.value)}
         readOnly={!isTodoEditable}
+        onChange={(e) => setTodoMsg(e.target.value)}
+        value={todoMsg}
       />
       {/* Edit, Save Button */}
       <button

@@ -4,38 +4,46 @@ import { TodoForm, TodoItem } from "./components";
 
 function App() {
   const [todos, setTodos] = useState([]);
-// context api fnctionality
-  const addTodo = (todo) =>{
-    setTodos((prevTodo) => [{id:Date.now(),...todo},...prevTodo])
-  }
+  // context api fnctionality
+  const addTodo = (todo) => {
+    setTodos((prevTodo) => [{ id: Date.now(), ...todo }, ...prevTodo]);
+  };
+  console.log(todos);
 
-  const updateTodo = (id,todo) =>{
-    setTodos((prevTodo) => prevTodo.map((prevTodo)=> (prevTodo.id === id ? todo : prevTodo)))      
-  }
+  const updateTodo = (id, todo) => {
+    setTodos((prevTodo) =>
+      prevTodo.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo))
+    );
+  };
 
   const deleteTodo = (id) => {
-    setTodos(prevTodo => prevTodo.filter((prevTodo)=> prevTodo.id !== id))
-  }
+    setTodos((prevTodo) => prevTodo.filter((prevTodo) => prevTodo.id !== id));
+  };
 
-  const toggeleComplete = (id) =>{
-    setTodos((prevTodo) => prevTodo.map((prevTodo) => prevTodo.id === id ? {...prevTodo,completed: !prevTodo.completed} : prevTodo))
-  }
+  const toggeleComplete = (id) => {
+    setTodos((prevTodo) =>
+      prevTodo.map((prevTodo) =>
+        prevTodo.id === id
+          ? { ...prevTodo, completed: !prevTodo.completed }
+          : prevTodo
+      )
+    );
+  };
 
   //local storage functionalitys
 
-  useEffect(()=>{
-    const todos = JSON.parse(localStorage.getItem("todos"))
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"));
 
-    if(todos &&todos.length > 0)
-      {
-        setTodos(todos);
-      }
-  },[])
+    if (todos && todos.length > 0) {
+      setTodos(todos);
+    }
+  }, []);
 
-  useEffect(() =>{
-    localStorage.setItem("todos", JSON.stringify(todos))
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
     // JOSON.stringify() -- > conver data into string formate
-  },[todos])
+  }, [todos]);
 
   return (
     <TodoProvider
@@ -49,15 +57,15 @@ function App() {
           <div className="mb-4">
             {/* Todo form goes here */}
             <TodoForm />
-            </div>
+          </div>
           <div className="flex flex-wrap gap-y-3">
             {/*Loop and Add TodoItem here */}
-            {
-              todos.map((todo) => (
-                <div key={todo.key} className="w-full"> 
+            {todos.map((todo) => (
+              <div key={todo.id} className="w-full">
+                {console.log(todo)}
                 <TodoItem todo={todo} />
-                </div>
-              ))}
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -10,9 +10,11 @@ function TodoForm() {
 
     if (!todo) return;
 
-    addTodo({ todo: todo, completed: false });
+    addTodo({ todo, completed: false });
+    console.log(todo);
     // addTodo({id: Date.now(),todo:todo,completed:false})
-    // addTodo({todo,completed:false})
+    // addTodo({todo,completed:false})b
+    console.log("todo",todo);
     setTodos("");
   };
   console.log();
