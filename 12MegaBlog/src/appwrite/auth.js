@@ -1,7 +1,7 @@
-import conf from "../config/config";
+import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
 
-export class AuthSErvice {
+export class AuthService {
   client = new Client();
   account;
 
@@ -23,6 +23,7 @@ export class AuthSErvice {
       );
       if (userAccount) {
         //call another method
+        console.log("Account create successfully");
         return this.login({ email, password });
       } else {
         return userAccount;
@@ -41,7 +42,7 @@ export class AuthSErvice {
     }
   }
 
-  // Checked user loge in or not
+  // Checked user log in or not
   async getCurrentUer() {
     try {
       return this.account.get();
@@ -61,6 +62,8 @@ export class AuthSErvice {
   }
 }
 
-const authService = new AuthSErvice();
+const authService = new AuthService();
 
 export default authService;
+
+// fro create user account and many more operations
