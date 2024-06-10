@@ -62,3 +62,11 @@ async getPosts(queries = [Query.equal("status","active")]){
     }
   }
 ```
+
+# Login form component
+- react `react-hook-form`
+
+```jsx
+
+import { useForm } from "react-hook-form";
+```
